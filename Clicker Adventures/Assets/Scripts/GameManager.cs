@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public playerMotor player;
+    private GameObject currentEnemy;
 
-    public GameObject currentEnemy;
-    [SerializeField]
-    private GameObject[] enemies;
-    [SerializeField]
+    public GameObject[] enemies;
     private GameObject enemySpawn;
+
+    [SerializeField]
+    private int enemyCount = 0;
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("player").GetComponent<playerMotor>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -33,5 +40,10 @@ public class GameManager : MonoBehaviour
             currentEnemy = enemies[randomIndex];
 
         }
+
+        if (player != null)
+            enemyCount = player.enemyCount;
+
+
     }
 }

@@ -5,14 +5,12 @@ using UnityEngine;
 public class EnemyMotor : MonoBehaviour
 {
     public float MaxHealth = 10f;
-    public int BaseDamage;
     public float attackTime = 3f;
 
-    public float timesStamp = 2f;
+    private float timesStamp;
 
     private playerMotor player;
-
-    [SerializeField]
+    
     private float currentHealth;
     private Animator animator;
 
@@ -31,6 +29,7 @@ public class EnemyMotor : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+            player.enemyCount++;
             Destroy(gameObject);
         }
 
@@ -38,7 +37,6 @@ public class EnemyMotor : MonoBehaviour
         {
             animator.SetTrigger("isAttacking");
             timesStamp = Time.time + attackTime;
-            //player.TakeDamage(BaseDamage);
         }
     }
 
@@ -52,4 +50,6 @@ public class EnemyMotor : MonoBehaviour
     {
         isOnGround = true;
     }
+
+    
 }

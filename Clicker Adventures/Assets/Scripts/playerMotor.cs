@@ -7,20 +7,24 @@ public class playerMotor : MonoBehaviour
 {
 
     public float MaxHealth;
+    public int enemyCount = 0;
 
-    [SerializeField]
     private float currentHealth;
+    
 
     private Animator animator;
 
     public Slider healthSlider;
     public Text healthText;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         healthSlider.maxValue = MaxHealth;
         healthText.text = MaxHealth + "/" + MaxHealth;
+    }
+    
+    void Start()
+    {
         currentHealth = MaxHealth;
         animator = GetComponent<Animator>();
     }
