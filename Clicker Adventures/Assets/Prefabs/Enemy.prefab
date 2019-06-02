@@ -50,7 +50,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 4
-  attackTime: 5
+  attackTime: 3
+  GivenExp: 1
+  GivenGold: 3
   isOnGround: 0
 --- !u!212 &1647287212200955418
 SpriteRenderer:

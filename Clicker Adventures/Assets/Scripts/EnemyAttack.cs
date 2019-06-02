@@ -13,7 +13,6 @@ public class EnemyAttack : MonoBehaviour
         {
 
             col.SendMessage("TakeDamage", dmg);
-            Debug.Log(col.name);
         }
     }
 }

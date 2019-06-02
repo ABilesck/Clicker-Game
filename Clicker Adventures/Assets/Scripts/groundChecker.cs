@@ -32,7 +32,6 @@ public class groundChecker : MonoBehaviour
 
     IEnumerator WaitFor(float s)
     {
-        Debug.Log("waiting");
         yield return new WaitForSeconds(s);
         go.SendMessage("Grounded");
     }

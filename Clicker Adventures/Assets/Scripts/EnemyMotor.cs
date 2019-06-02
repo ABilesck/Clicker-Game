@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemyMotor : MonoBehaviour
 {
-    public float MaxHealth = 10f;
-    public float attackTime = 3f;
+    public float MaxHealth;
+    public float attackTime;
+    public float GivenExp;
+    public int GivenGold;
 
     private float timesStamp;
 
@@ -30,6 +32,8 @@ public class EnemyMotor : MonoBehaviour
         if (currentHealth <= 0)
         {
             player.enemyCount++;
+            player.SendMessage("AddExp",GivenExp);
+            player.SendMessage("AddGold",GivenGold);
             Destroy(gameObject);
         }
 
@@ -43,7 +47,6 @@ public class EnemyMotor : MonoBehaviour
     public void TakeDamage(int Damage)
     {
         currentHealth -= Damage;
-        Debug.Log("we hit " + gameObject.name +" - "+ Damage);
     }
 
     public void Grounded()

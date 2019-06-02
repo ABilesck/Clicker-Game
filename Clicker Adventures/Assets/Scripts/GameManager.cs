@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+
+    public Text enemyCountText;
+
     public playerMotor player;
     private GameObject currentEnemy;
 
@@ -44,6 +48,7 @@ public class GameManager : MonoBehaviour
         if (player != null)
             enemyCount = player.enemyCount;
 
+        enemyCountText.text = enemyCount.ToString();
 
     }
 }
