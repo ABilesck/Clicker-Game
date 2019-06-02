@@ -7,7 +7,7 @@ public class playerMotor : MonoBehaviour
 {
 
     public float MaxHealth;
-    public int enemyCount = 0;
+    public int enemyCount = 1;
 
     private float currentHealth;
     
@@ -17,6 +17,7 @@ public class playerMotor : MonoBehaviour
 
     public Slider healthSlider;
     public Text healthText;
+    public GameObject GameOver;
 
     private void Awake()
     {
@@ -29,6 +30,13 @@ public class playerMotor : MonoBehaviour
         currentHealth = MaxHealth;
         animator = GetComponent<Animator>();
         stats = GetComponent<PlayerStats>();
+    }
+    private void Update()
+    {
+        if(currentHealth <= 0)
+        {
+            Die();
+        }
     }
 
     public void Attack()
@@ -46,6 +54,12 @@ public class playerMotor : MonoBehaviour
     {
         healthSlider.value = currentHealth;
         healthText.text = currentHealth + "/" + MaxHealth;
+    }
+
+    private void Die()
+    {
+        GameOver.SetActive(true);
+        Time.timeScale = 0;
     }
 
     private void AddExp(float exp)

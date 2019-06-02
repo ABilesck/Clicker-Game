@@ -13,9 +13,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] enemies;
     private GameObject enemySpawn;
-
-    [SerializeField]
-    private int enemyCount = 0;
+    
+    private int enemyCount = 1;
 
     private void Awake()
     {
@@ -34,21 +33,32 @@ public class GameManager : MonoBehaviour
     {
         currentEnemy = GameObject.FindGameObjectWithTag("enemy");
 
-        if(currentEnemy == null)
-        {
-            int randomIndex = Random.Range(0, enemies.Length - 1);
-            Instantiate(enemies[randomIndex], 
-                enemySpawn.transform.position,
-                enemySpawn.transform.rotation);
+        enemyCountText.text = enemyCount.ToString();
 
-            currentEnemy = enemies[randomIndex];
+        if (currentEnemy == null)
+        {
+
+            if (enemyCount % 10 != 0)
+            {
+                int randomIndex = Random.Range(0, enemies.Length - 1);
+                Instantiate(enemies[randomIndex],
+                    enemySpawn.transform.position,
+                    enemySpawn.transform.rotation);
+
+                currentEnemy = enemies[randomIndex];
+            }
+            else if(enemyCount % 10 == 0)
+            {
+                Debug.Log("Boss");
+            }
 
         }
+
+        
 
         if (player != null)
             enemyCount = player.enemyCount;
 
-        enemyCountText.text = enemyCount.ToString();
 
     }
 }

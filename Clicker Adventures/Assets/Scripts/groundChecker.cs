@@ -25,8 +25,6 @@ public class groundChecker : MonoBehaviour
                 StartCoroutine(WaitFor(attackTime));
             else
                 go.SendMessage("Grounded");
-
-            Debug.Log(random);
         }
     }
 
